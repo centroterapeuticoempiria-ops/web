@@ -9,16 +9,21 @@ import { contactData, getWhatsAppLink } from "@/data/contact";
 import { OrganicLeaf, WhatsAppGlyph } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Nuestro Espacio",
+  title: "Nuestro Consultorio en Modelia, Bogotá | Centro Terapéutico Empiria",
   description:
-    "Conoce el espacio del Centro Terapéutico Empiria en Bogotá, y el entorno donde acompañamos los procesos de fonoaudiología infantil.",
+    "Conoce las instalaciones de Centro Terapéutico Empiria en Modelia, Bogotá. Consultorio fonoaudiológico cálido, seguro y adaptado para niños de 0 a 12 años.",
   alternates: {
     canonical: "/nuestro-espacio",
   },
+  openGraph: {
+    title: "Nuestro Consultorio en Modelia, Bogotá | Centro Terapéutico Empiria",
+    description:
+      "Conoce las instalaciones de Centro Terapéutico Empiria en Modelia, Bogotá. Espacio fonoaudiológico pensado para la infancia.",
+    url: "/nuestro-espacio",
+  },
 };
 
-// Same Google Maps link used in ContactSection.tsx — kept in sync, not duplicated as a new URL.
-const MAPS_LINK = "https://maps.google.com/?q=Avenida+Calle+24+%2374-55+Bogota";
+const MAPS_LINK = contactData.address.googleMapsPlaceUrl;
 
 const spacePhotos: SpaceLightboxImage[] = [
   {
@@ -56,9 +61,9 @@ export default function NuestroEspacioPage() {
           <OrganicLeaf size={40} color="#8B7FD1" />
         </div>
         <div className="max-w-3xl mx-auto">
-          <Badge variant="lavender">Conoce Nuestro Consultorio</Badge>
+          <Badge variant="lavender">Sede Presencial en Modelia</Badge>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-[#2D2D3A] mt-4 tracking-tight">
-            Nuestro Espacio
+            Nuestro Consultorio en Modelia, Bogotá
           </h1>
           <p className="text-base sm:text-lg text-[#3E3B52] mt-4 leading-relaxed">
             Pensamos cada rincón de nuestro consultorio para que niños y familias se sientan

@@ -26,7 +26,7 @@ export const therapists: Therapist[] = [
     candidImage: "/images/team/johanna-gomez-candid.jpg",
     candidAlt: "Johanna Gómez usando tarjetas de vocabulario en una sesión",
     bio: [
-      "Soy fonoaudióloga egresada de la Corporación Universitaria Iberoamericana, con más de cinco años de experiencia en intervención y valoración fonoaudiológica con niños, jóvenes y adultos. Mi trayectoria profesional me ha permitido desarrollar una mirada integral sobre los procesos de comunicación, con especial interés y experiencia en el abordaje del lenguaje y la lectoescritura en población infantil.",
+      "Soy fonoaudióloga egresada de la Corporación Universitaria Iberoamericana, con más de cinco años de experiencia profesional en valoración e intervención fonoaudiológica. A lo largo de mi trayectoria he consolidado mi especial interés y dedicación al abordaje del lenguaje, la comunicación y la lectoescritura en la población infantil (0 a 12 años).",
       "Mi práctica se caracteriza por brindar una atención cálida, cercana y respetuosa, basada en las necesidades y particularidades de cada persona. En el trabajo con niños y niñas, considero fundamental crear espacios seguros y de confianza que favorezcan su participación y aprendizaje, integrando el acompañamiento profesional con una relación terapéutica basada en la empatía y el vínculo.",
     ],
   },

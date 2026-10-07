@@ -12,6 +12,7 @@ export interface ContactInfo {
     city: string;
     country: string;
     full: string;
+    googleMapsPlaceUrl: string;
   };
   schedule: {
     weekdays: string;
@@ -41,6 +42,8 @@ export const contactData: ContactInfo = {
     city: "Bogotá",
     country: "Colombia",
     full: "Avenida Calle 24 #74-55, Barrio Modelia, Bogotá, Colombia",
+    googleMapsPlaceUrl:
+      "https://www.google.com/maps/place/Centro+Terap%C3%A9utico+Empiria/data=!4m2!3m1!1s0x0:0x41d7ceca5cb0b891?sa=X&ved=1t:2428&ictx=111",
   },
   schedule: {
     weekdays: "Lunes a viernes: 9:00 a.m. – 6:00 p.m.",
@@ -53,10 +56,31 @@ export const contactData: ContactInfo = {
     instagramUrl: "https://instagram.com/centrot.empiria",
   },
   defaultWhatsAppMessage:
-    "Hola, quisiera recibir información sobre el proceso de valoración fonoaudiológica infantil en Centro Terapéutico Empiria.",
+    "Hola, quisiera información sobre fonoaudiología infantil para mi hijo/a.",
 };
 
-export const getWhatsAppLink = (customMessage?: string) => {
-  const text = customMessage || contactData.defaultWhatsAppMessage;
+/** Pre-defined contextual WhatsApp messages for specific user intents. */
+export const CONTEXTUAL_WHATSAPP_MESSAGES = {
+  general: "Hola, quisiera información sobre fonoaudiología infantil para mi hijo/a.",
+  valoracion: "Hola, quisiera información sobre una valoración fonoaudiológica infantil.",
+  lenguaje: "Hola, quisiera información sobre terapia de lenguaje para mi hijo/a.",
+  habla: "Hola, quisiera información sobre terapia de habla para mi hijo/a.",
+  comunicacion: "Hola, quisiera información sobre acompañamiento en comunicación para mi hijo/a.",
+  lectoescritura: "Hola, quisiera información sobre acompañamiento en lectoescritura.",
+  aprendizaje: "Hola, quisiera información sobre acompañamiento en procesos de aprendizaje.",
+  paquetes: "Hola, quisiera conocer los planes y paquetes de atención de Empiria.",
+} as const;
+
+export type WhatsAppIntent = keyof typeof CONTEXTUAL_WHATSAPP_MESSAGES;
+
+export const getWhatsAppLink = (intentOrCustom?: WhatsAppIntent | string) => {
+  if (!intentOrCustom) {
+    return `https://wa.me/${contactData.phoneRaw}?text=${encodeURIComponent(contactData.defaultWhatsAppMessage)}`;
+  }
+  const text =
+    intentOrCustom in CONTEXTUAL_WHATSAPP_MESSAGES
+      ? CONTEXTUAL_WHATSAPP_MESSAGES[intentOrCustom as WhatsAppIntent]
+      : intentOrCustom;
   return `https://wa.me/${contactData.phoneRaw}?text=${encodeURIComponent(text)}`;
 };
+

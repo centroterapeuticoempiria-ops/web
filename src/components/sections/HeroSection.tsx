@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
@@ -116,7 +114,7 @@ export const HeroSection: React.FC = () => {
                 <div className="relative w-full aspect-square rounded-[36px] sm:rounded-[48px] overflow-hidden bg-[#F2EFFA]">
                   <Image
                     src="/images/hero/hero-child.jpg"
-                    alt="Niña sonriendo feliz en Centro Terapéutico Empiria"
+                    alt="Niña sonriendo durante una actividad lúdica y comunicativa"
                     fill
                     sizes="(max-width: 768px) 100vw, 500px"
                     className="object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"

@@ -109,6 +109,9 @@ export default function RootLayout({
     telephone: "+573127366606",
     email: contactData.email,
     url: siteUrl,
+    hasMap: contactData.address.googleMapsPlaceUrl,
+    priceRange: "$$",
+    currenciesAccepted: "COP",
     address: {
       "@type": "PostalAddress",
       streetAddress: contactData.address.street,
@@ -116,6 +119,11 @@ export default function RootLayout({
       addressRegion: "Cundinamarca",
       addressCountry: "CO",
       neighborhood: contactData.address.neighborhood,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 4.6674,
+      longitude: -74.1166,
     },
     openingHoursSpecification: [
       {
@@ -134,6 +142,33 @@ export default function RootLayout({
     medicalSpecialty: "SpeechPathology",
     sameAs: [
       contactData.social.instagramUrl,
+      contactData.address.googleMapsPlaceUrl,
+    ],
+    employee: [
+      {
+        "@type": "Person",
+        name: "Johanna Gómez",
+        jobTitle: "Fonoaudióloga",
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: "Corporación Universitaria Iberoamericana",
+        },
+      },
+      {
+        "@type": "Person",
+        name: "Lina Rodríguez",
+        jobTitle: "Fonoaudióloga y Especialista en Neuropsicología Escolar",
+        alumniOf: [
+          {
+            "@type": "CollegeOrUniversity",
+            name: "Institución Universitaria Escuela Colombiana de Rehabilitación",
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            name: "Politécnico Grancolombiano",
+          },
+        ],
+      },
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -143,8 +178,18 @@ export default function RootLayout({
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
+            name: "Valoración Fonoaudiológica Infantil",
+            description: "Evaluación integral de habilidades de habla, lenguaje, lectoescritura y aprendizaje en Modelia, Bogotá.",
+            url: `${siteUrl}/valoracion-fonoaudiologica`,
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
             name: "Valoración e Intervención en Habla",
             description: "Dificultades en la articulación, pronunciación y fluidez del habla.",
+            url: `${siteUrl}/areas-de-atencion/habla`,
           },
         },
         {
@@ -153,6 +198,7 @@ export default function RootLayout({
             "@type": "Service",
             name: "Valoración e Intervención en Lenguaje",
             description: "Comprensión, enriquecimiento léxico y estructuración sintáctica.",
+            url: `${siteUrl}/areas-de-atencion/lenguaje`,
           },
         },
         {
@@ -161,6 +207,7 @@ export default function RootLayout({
             "@type": "Service",
             name: "Comunicación Social y Pragmática",
             description: "Habilidades de interacción, reciprocidad y comunicación aumentativa/alternativa.",
+            url: `${siteUrl}/areas-de-atencion/comunicacion`,
           },
         },
         {
@@ -169,6 +216,7 @@ export default function RootLayout({
             "@type": "Service",
             name: "Procesos de Lectoescritura",
             description: "Conciencia fonológica, decodificación, comprensión lectora y escritura sin frustración.",
+            url: `${siteUrl}/areas-de-atencion/lectoescritura`,
           },
         },
         {
@@ -177,6 +225,7 @@ export default function RootLayout({
             "@type": "Service",
             name: "Procesos de Aprendizaje Infantil",
             description: "Atención, memoria de trabajo verbal, razonamiento y funciones ejecutivas escolares.",
+            url: `${siteUrl}/areas-de-atencion/aprendizaje`,
           },
         },
       ],

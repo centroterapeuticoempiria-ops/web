@@ -44,8 +44,9 @@ export const Header: React.FC = () => {
     { label: "Inicio", href: "/" },
     { label: "Nosotros", href: "/nosotros" },
     { label: "Áreas de atención", href: "/areas-de-atencion" },
-    { label: "Nuestro espacio", href: "/nuestro-espacio" },
+    { label: "Valoración", href: "/valoracion-fonoaudiologica" },
     { label: "Nuestro proceso", href: "/nuestro-proceso" },
+    { label: "Nuestro espacio", href: "/nuestro-espacio" },
     { label: "Recursos", href: "/recursos" },
     { label: "Contacto", href: "/contacto" },
   ];
@@ -63,10 +64,16 @@ export const Header: React.FC = () => {
         <div className="hidden lg:block bg-gradient-to-r from-[#F2EFFA]/70 via-[#E8E4F7]/50 to-[#F2EFFA]/70 border-b border-[#E8E4F7]/70 py-1.5 px-6 text-xs text-[#3E3B52]">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-6">
-              <span className="inline-flex items-center gap-1.5">
+              <a
+                href={contactData.address.googleMapsPlaceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-[#5B4B9E] transition-colors"
+                title="Ver ubicación en Google Maps"
+              >
                 <MapPin size={14} className="text-[#5B8FD4]" />
-                <span>Bogotá</span>
-              </span>
+                <span>Modelia, Bogotá</span>
+              </a>
               <span className="inline-flex items-center gap-1.5">
                 <Clock size={14} className="text-[#8B7FD1]" />
                 <span>{contactData.schedule.topbarSummary}</span>

@@ -24,6 +24,7 @@ export const Footer: React.FC = () => {
   ];
 
   const serviceLinks = [
+    { label: "Valoración Fonoaudiológica", href: "/valoracion-fonoaudiologica" },
     { label: "Habla e Inteligibilidad", href: "/areas-de-atencion/habla" },
     { label: "Desarrollo del Lenguaje", href: "/areas-de-atencion/lenguaje" },
     { label: "Comunicación e Interacción", href: "/areas-de-atencion/comunicacion" },
@@ -178,10 +179,15 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-xs text-[#3E3B52]">
               <div className="flex items-start gap-2">
                 <MapPin size={15} className="text-[#5B8FD4] shrink-0 mt-0.5" />
-                <span>
+                <a
+                  href={contactData.address.googleMapsPlaceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#5B4B9E] transition-colors"
+                >
                   {contactData.address.street} <br />
                   {contactData.address.neighborhood}, Bogotá
-                </span>
+                </a>
               </div>
               <div className="flex items-start gap-2">
                 <Clock size={15} className="text-[#8B7FD1] shrink-0 mt-0.5" />

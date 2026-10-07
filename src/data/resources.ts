@@ -8,6 +8,8 @@ export interface Article {
   author: string;
   authorRole: string;
   keywords: string[];
+  relatedServiceSlug: string;
+  relatedServiceTitle: string;
   contentParagraphs: string[];
   keyRecommendations: string[];
   faq: { question: string; answer: string }[];
@@ -25,6 +27,8 @@ export const resourcesData: Article[] = [
     author: "Johanna Gómez",
     authorRole: "Fonoaudióloga",
     keywords: ["lenguaje infantil", "terapia de lenguaje niños Bogotá", "dificultades del lenguaje infantil"],
+    relatedServiceSlug: "lenguaje",
+    relatedServiceTitle: "Terapia de Lenguaje Infantil",
     contentParagraphs: [
       "El lenguaje es una de las habilidades más fascinantes del desarrollo humano. Cada niño recorre este sendero con un ritmo propio; sin embargo, existen hitos comunicativos que sirven de referencia para identificar cuándo el proceso se está desarrollando adecuadamente y cuándo podría beneficiarse de un acompañamiento especializado.",
       "Muchas familias escuchan frases bienintencionadas como 'ya hablará cuando entre al colegio' o 'los niños tardan más que las niñas'. Si bien la paciencia es fundamental, una consulta oportuna no busca etiquetar al menor, sino comprender cómo se comunican sus ideas y proporcionarle a la familia herramientas cotidianas eficaces.",
@@ -55,6 +59,8 @@ export const resourcesData: Article[] = [
     author: "Lina Rodríguez",
     authorRole: "Fonoaudióloga | Esp. Neuropsicología Escolar",
     keywords: ["pronunciación niños", "dificultades del habla", "fonoaudiología niños Bogotá"],
+    relatedServiceSlug: "habla",
+    relatedServiceTitle: "Terapia de Habla y Pronunciación",
     contentParagraphs: [
       "Aprender a hablar implica una coordinación motriz sumamente compleja entre labios, lengua, paladar, respiración y discriminación auditiva. Es natural que los niños pequeños simplifiquen palabras (por ejemplo, diciendo 'tete' por 'chupete' o 'pato' por 'plato').",
       "No obstante, a medida que crecen, ciertos sonidos deben irse consolidando de manera progresiva. La persistencia de errores articulatorios más allá de la edad cronológica esperada puede influir en su seguridad personal y en su futura adquisición de la lectoescritura.",
@@ -85,6 +91,8 @@ export const resourcesData: Article[] = [
     author: "Johanna Gómez",
     authorRole: "Fonoaudióloga",
     keywords: ["lenguaje infantil", "estimulación del lenguaje", "fonoaudiología Bogotá"],
+    relatedServiceSlug: "lenguaje",
+    relatedServiceTitle: "Estimulación y Terapia de Lenguaje",
     contentParagraphs: [
       "No se necesitan materiales costosos ni sesiones formales en casa para estimular el lenguaje. Los momentos más fértiles ocurren durante la preparación del desayuno, la hora del baño, el trayecto en el carro o mientras ordenamos los juguetes.",
       "El secreto reside en la 'presencia atenta': ponerse a la altura de los ojos del niño, escuchar con paciencia sin terminarle las oraciones y describir lo que estamos experimentando juntos usando un vocabulario variado y enriquecido.",
@@ -114,6 +122,8 @@ export const resourcesData: Article[] = [
     author: "Lina Rodríguez",
     authorRole: "Fonoaudióloga | Esp. Neuropsicología Escolar",
     keywords: ["lectoescritura niños", "dificultades de lectura", "fonoaudiología escolar Bogotá"],
+    relatedServiceSlug: "lectoescritura",
+    relatedServiceTitle: "Acompañamiento en Lectoescritura",
     contentParagraphs: [
       "Aprender a leer y escribir es una invención cultural que exige reconfigurar circuitos cerebrales. Cuando un niño experimenta tropiezos persistentes al decodificar palabras o plasmar sus pensamientos en un cuaderno, suele sentir una gran carga de frustración y pensar que 'no es capaz'.",
       "Desde el enfoque fonoaudiológico y neuropsicológico escolar, entendemos que la lectura se cimienta sobre el lenguaje oral. Si la base fonológica es sólida, la correspondencia entre sonidos y grafemas se vuelve comprensible y predecible.",

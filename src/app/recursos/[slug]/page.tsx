@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Clock, MessageCircle, CheckCircle2, Info, Sparkles } from "lucide-react";
+import { ArrowLeft, Clock, MessageCircle, CheckCircle2, Info, Sparkles, ChevronRight, Stethoscope, ArrowRight } from "lucide-react";
 import { resourcesData } from "@/data/resources";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -33,10 +33,6 @@ export async function generateMetadata({ params }: ResourcePageProps): Promise<M
       title: article.title,
       description: article.summary,
       type: "article",
-      // Metadata merging is shallow: defining `openGraph` here replaces the
-      // root layout's openGraph object entirely, which would otherwise drop
-      // the auto-injected opengraph-image.png. Re-declare it explicitly so
-      // article pages keep their social preview image.
       images: [
         {
           url: "/opengraph-image.png",
@@ -57,9 +53,101 @@ export default async function ResourceDetailPage({ params }: ResourcePageProps) 
     notFound();
   }
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: "https://www.centroempiria.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Recursos para Familias",
+        item: "https://www.centroempiria.com/recursos",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: `https://www.centroempiria.com/recursos/${slug}`,
+      },
+    ],
+  };
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.summary,
+    url: `https://www.centroempiria.com/recursos/${slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.centroempiria.com/recursos/${slug}`,
+    },
+    datePublished: "2026-09-01T08:00:00+00:00",
+    dateModified: "2026-10-01T08:00:00+00:00",
+    inLanguage: "es-CO",
+    author: {
+      "@type": "Person",
+      name: article.author,
+      jobTitle: article.authorRole,
+      worksFor: {
+        "@type": "MedicalBusiness",
+        name: "Centro Terapéutico Empiria",
+      },
+    },
+    publisher: {
+      "@type": "MedicalBusiness",
+      name: "Centro Terapéutico Empiria",
+      url: "https://www.centroempiria.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.centroempiria.com/logo-empiria.png",
+      },
+    },
+    image: "https://www.centroempiria.com/opengraph-image.png",
+  };
+
   return (
     <article className="py-12 sm:py-20 bg-gradient-to-b from-[#E8E4F7]/30 via-white/20 to-transparent">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Breadcrumb Navigation UI */}
+        <nav aria-label="Ruta de navegación" className="mb-6">
+          <ol className="flex flex-wrap items-center gap-1.5 text-xs text-[#5B4B9E]/80">
+            <li>
+              <Link href="/" className="hover:text-[#5B4B9E] underline underline-offset-4">
+                Inicio
+              </Link>
+            </li>
+            <li>
+              <ChevronRight className="w-3.5 h-3.5 text-[#8B7FD1]" />
+            </li>
+            <li>
+              <Link href="/recursos" className="hover:text-[#5B4B9E] underline underline-offset-4">
+                Recursos
+              </Link>
+            </li>
+            <li>
+              <ChevronRight className="w-3.5 h-3.5 text-[#8B7FD1]" />
+            </li>
+            <li className="font-semibold text-[#2D2D3A] truncate max-w-[240px] sm:max-w-none" aria-current="page">
+              {article.title}
+            </li>
+          </ol>
+        </nav>
+
         {/* Back Link */}
         <Link
           href="/recursos"
@@ -120,6 +208,56 @@ export default async function ResourceDetailPage({ params }: ResourcePageProps) 
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Internal Cross-Linking: Related Services and Valuation */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {article.relatedServiceSlug && (
+            <Link
+              href={`/areas-de-atencion/${article.relatedServiceSlug}`}
+              className="p-5 rounded-2xl bg-[#FAF9FD] border border-[#E8E4F7] hover:border-[#8B7FD1] transition-all group flex flex-col justify-between"
+            >
+              <div>
+                <span className="text-[11px] font-bold text-[#8B7FD1] uppercase tracking-wider block mb-1">
+                  Servicio especializado relacionado
+                </span>
+                <p className="font-bold text-sm sm:text-base text-[#2D2D3A] group-hover:text-[#5B4B9E] transition-colors">
+                  {article.relatedServiceTitle}
+                </p>
+                <p className="text-xs text-[#5B4B9E] mt-1">
+                  Conoce cómo abordamos este aspecto en nuestras sesiones presenciales en Bogotá.
+                </p>
+              </div>
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-bold text-[#5B4B9E] group-hover:translate-x-1 transition-transform">
+                <span>Ver detalles del área</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            </Link>
+          )}
+
+          <Link
+            href="/valoracion-fonoaudiologica"
+            className="p-5 rounded-2xl bg-gradient-to-br from-[#F2EFFA] to-white border border-[#D4C9EE] hover:border-[#8B7FD1] transition-all group flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <Stethoscope className="w-4 h-4 text-[#5B4B9E]" />
+                <span className="text-[11px] font-bold text-[#5B4B9E] uppercase tracking-wider">
+                  Primer paso terapéutico
+                </span>
+              </div>
+              <p className="font-bold text-sm sm:text-base text-[#2D2D3A] group-hover:text-[#5B4B9E] transition-colors">
+                Valoración Fonoaudiológica Infantil
+              </p>
+              <p className="text-xs text-[#3E3B52] mt-1">
+                Conoce qué evaluamos en la primera sesión presencial en Modelia, Bogotá.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1.5 text-xs font-bold text-[#5B4B9E] group-hover:translate-x-1 transition-transform">
+              <span>Conoce el proceso de valoración</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </Link>
         </div>
 
         {/* Non-diagnostic disclaimer */}

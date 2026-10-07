@@ -1,11 +1,13 @@
 /**
  * Centralized site URL helper.
  *
+ * Official production canonical domain:
+ * https://www.centroempiria.com
+ *
  * Resolution order:
- * 1. `NEXT_PUBLIC_SITE_URL` — explicit override, set this once a custom domain is live.
- * 2. `VERCEL_PROJECT_PRODUCTION_URL` — Vercel system env var, available at build time;
- *    it automatically becomes the custom domain once one is attached to the project.
- * 3. `https://empiriaweb.vercel.app` — known-good Vercel fallback (no custom domain owned yet).
+ * 1. `NEXT_PUBLIC_SITE_URL` — explicit override from environment variables.
+ * 2. `VERCEL_PROJECT_PRODUCTION_URL` — only if it represents the custom domain (not *.vercel.app).
+ * 3. Default fallback — canonical production domain: `https://www.centroempiria.com`.
  */
 export const getSiteUrl = (): string => {
   const envUrl = process.env.NEXT_PUBLIC_SITE_URL;
@@ -14,9 +16,9 @@ export const getSiteUrl = (): string => {
   }
 
   const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  if (vercelUrl && vercelUrl.trim().length > 0) {
+  if (vercelUrl && vercelUrl.trim().length > 0 && !vercelUrl.includes("vercel.app")) {
     return `https://${vercelUrl.trim()}`.replace(/\/+$/, "");
   }
 
-  return "https://empiriaweb.vercel.app";
+  return "https://www.centroempiria.com";
 };

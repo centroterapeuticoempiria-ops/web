@@ -37,10 +37,10 @@ export const faqData: FAQItem[] = [
     category: "Proceso",
   },
   {
-    id: "mayores-10-anos",
-    question: "¿Atienden niños mayores de 10 años?",
+    id: "rango-edad",
+    question: "¿Cuál es el rango de edad que atienden en Empiria?",
     answer:
-      "La atención está dirigida principalmente a niños de 0 a 10 años, pero los casos de niños mayores pueden valorarse individualmente.",
+      "Nuestra atención está especializada en la población infantil de 0 a 12 años, adaptando cada evaluación y proceso terapéutico al momento madurativo de cada niño.",
     category: "General",
   },
   {

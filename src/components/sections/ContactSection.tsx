@@ -76,7 +76,7 @@ export const ContactSection: React.FC = () => {
       id: "location",
       title: "Sede Presencial",
       value: contactData.address.full,
-      href: "https://maps.google.com/?q=Avenida+Calle+24+%2374-55+Bogota",
+      href: contactData.address.googleMapsPlaceUrl,
       isExternal: true,
       description: "Instalaciones cálidas, seguras y adaptadas a la infancia.",
       icon: <LocationIcon size={32} className="text-[#5B4B9E]" strokeWidth={2} />,

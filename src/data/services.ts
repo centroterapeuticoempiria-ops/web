@@ -2,6 +2,9 @@ export interface ServiceArea {
   id: string;
   slug: string;
   title: string;
+  pageH1: string;
+  seoTitle: string;
+  seoDescription: string;
   shortDescription: string;
   fullDescription: string;
   signsToConsult: string[];
@@ -16,6 +19,10 @@ export const servicesData: ServiceArea[] = [
     id: "habla",
     slug: "habla",
     title: "Habla",
+    pageH1: "Fonoaudiología para dificultades del habla y pronunciación infantil en Bogotá",
+    seoTitle: "Terapia de Habla y Pronunciación Infantil en Bogotá | Empiria",
+    seoDescription:
+      "Acompañamiento fonoaudiológico especializado en articulación, inteligibilidad y fluidez verbal para niños en Modelia, Bogotá.",
     shortDescription: "Dificultades en la articulación y pronunciación de los sonidos del habla.",
     fullDescription:
       "Acompañamos los procesos de inteligibilidad, articulación y fluidez verbal. Trabajamos desde la conciencia fonológica y el desarrollo motriz del habla, facilitando que cada niño gane claridad, soltura y confianza al comunicarse con su entorno familiar y escolar.",
@@ -37,6 +44,10 @@ export const servicesData: ServiceArea[] = [
     id: "lenguaje",
     slug: "lenguaje",
     title: "Lenguaje",
+    pageH1: "Terapia de lenguaje para niños en Bogotá",
+    seoTitle: "Terapia de Lenguaje Infantil en Bogotá | Centro Terapéutico Empiria",
+    seoDescription:
+      "Intervención fonoaudiológica en comprensión, estructuración de oraciones y expresión verbal para niños en Bogotá.",
     shortDescription: "Procesos relacionados con la comprensión y expresión de ideas.",
     fullDescription:
       "Favorecemos la adquisición, enriquecimiento y organización del lenguaje tanto a nivel comprensivo como expresivo. Brindamos herramientas para que los niños puedan estructurar sus pensamientos, ampliar su léxico y comprender el mundo que los rodea con mayor claridad.",
@@ -58,6 +69,10 @@ export const servicesData: ServiceArea[] = [
     id: "comunicacion",
     slug: "comunicacion",
     title: "Comunicación",
+    pageH1: "Acompañamiento en comunicación e interacción social infantil en Bogotá",
+    seoTitle: "Comunicación Social y Pragmática Infantil en Bogotá | Empiria",
+    seoDescription:
+      "Acompañamiento en reciprocidad social, habilidades pragmáticas y canales aumentativos de comunicación infantil en Bogotá.",
     shortDescription: "Habilidades necesarias para interactuar y relacionarse con otras personas.",
     fullDescription:
       "La comunicación va mucho más allá de las palabras: abarca la mirada, la reciprocidad social, la intención compartida y la comprensión de normas sociales de interacción. Acompañamos a niños que requieren apoyo en pragmática o en sistemas alternativos de comunicación.",
@@ -79,6 +94,10 @@ export const servicesData: ServiceArea[] = [
     id: "lectoescritura",
     slug: "lectoescritura",
     title: "Lectoescritura",
+    pageH1: "Acompañamiento en lectoescritura infantil en Bogotá",
+    seoTitle: "Lectoescritura Infantil y Conciencia Fonológica en Bogotá | Empiria",
+    seoDescription:
+      "Apoyo fonoaudiológico en correspondencia letra-sonido, decodificación y comprensión lectora sin frustración en Bogotá.",
     shortDescription: "Procesos de lectura y escritura durante la etapa escolar.",
     fullDescription:
       "Acompañamos la transición del lenguaje oral al código escrito. Brindamos soporte en conciencia fonológica, decodificación grafema-fonema, velocidad, precisión y comprensión lectora, así como en la estructuración de la expresión escrita para el éxito escolar.",
@@ -101,6 +120,10 @@ export const servicesData: ServiceArea[] = [
     id: "aprendizaje",
     slug: "aprendizaje",
     title: "Aprendizaje",
+    pageH1: "Acompañamiento en procesos de aprendizaje infantil en Bogotá",
+    seoTitle: "Acompañamiento en Aprendizaje Infantil en Bogotá | Empiria",
+    seoDescription:
+      "Fortalecimiento de funciones cognitivas, atención, memoria verbal y autonomía escolar para niños en Bogotá.",
     shortDescription: "Procesos cognitivos y escolares relacionados con el desarrollo.",
     fullDescription:
       "Potenciamos las funciones cognitivas que sostienen el rendimiento académico y la autonomía infantil: atención sostenida, memoria de trabajo verbal, razonamiento lógico y flexibilidad cognitiva para resolver problemas de la vida cotidiana.",
@@ -119,3 +142,4 @@ export const servicesData: ServiceArea[] = [
     colorAccent: "#8B7FD1",
   },
 ];
+

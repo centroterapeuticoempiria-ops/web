@@ -31,7 +31,7 @@ export const processSteps: ProcessStep[] = [
       "Agendamos un primer encuentro virtual para explicar nuestra metodología, resolver preguntas y conocer a la profesional que podría acompañar el proceso.",
     detailPoints: [
       "Espacio exclusivo para padres o cuidadores principales",
-      "Claridad sobre tarifas, metodología y expectativas",
+      "Claridad sobre planes de atención, metodología y expectativas",
       "Vínculo de confianza inicial con la terapeuta",
     ],
     estimatedDuration: "30 minutos",

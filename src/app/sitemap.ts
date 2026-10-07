@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/nosotros",
     "/areas-de-atencion",
+    "/valoracion-fonoaudiologica",
     "/nuestro-espacio",
     "/nuestro-proceso",
     "/para-familias",
@@ -27,7 +28,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
-    priority: route === "" ? 1.0 : route.startsWith("/politica") ? 0.3 : 0.8,
+    priority:
+      route === ""
+        ? 1.0
+        : route === "/valoracion-fonoaudiologica"
+          ? 0.9
+          : route.startsWith("/politica") || route.startsWith("/autorizacion") || route.startsWith("/terminos")
+            ? 0.3
+            : 0.8,
   }));
 
   // Dynamic service routes
